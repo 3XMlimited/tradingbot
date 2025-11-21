@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 // Endpoint to receive TradingView webhook
 app.post("/webhook", async (req, res) => {
   try {
-    const { time, price, signal, volume } = req.body;
+    const { price, signal, volume } = req.body;
 
     // Validate required fields
     if (!signal) {
@@ -35,7 +35,7 @@ app.post("/webhook", async (req, res) => {
 
     // Format message
     const message = formatMessage({
-      time: time || new Date().toISOString(),
+      time: new Date().toISOString(),
       price: price || "N/A",
       signal: signal,
       volume: volume || "N/A",
