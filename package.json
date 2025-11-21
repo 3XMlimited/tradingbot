@@ -1,0 +1,24 @@
+{
+  "name": "telegram-alarm",
+  "version": "1.0.0",
+  "description": "接收 TradingView 信号并发送到 Telegram 群组",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "get-chat-id": "node get-chat-id.js"
+  },
+  "keywords": [
+    "tradingview",
+    "telegram",
+    "webhook"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1"
+  }
+}
+
