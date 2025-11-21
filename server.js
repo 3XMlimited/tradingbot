@@ -72,7 +72,7 @@ function formatMessage({ time, ticker, price, signal }) {
 📊 *Signal Type:* ${signal}
 💰 *Price:* ${price}
 📈 *Ticker:* ${ticker}
-🕐 *HKT:* ${moment(time).format("YYYY-MM-DD HH:mm").tz("Asia/Shanghai")}
+🕐 *HKT:* ${moment(time).tz("Asia/Hong_Kong").format("YYYY-MM-DD HH:mm")}
 ---
 _From TradingView_Bot`;
 }
