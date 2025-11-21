@@ -1,5 +1,6 @@
 const express = require("express");
 const axios = require("axios");
+const moment = require("moment-timezone");
 require("dotenv").config();
 
 const app = express();
@@ -71,8 +72,7 @@ function formatMessage({ time, ticker, price, signal }) {
 📊 *Signal Type:* ${signal}
 💰 *Price:* ${price}
 📈 *Ticker:* ${ticker}
-🕐 *Time:* ${time}
-
+🕐 *HKT:* ${moment(time).format("YYYY-MM-DD HH:mm").tz("Asia/Shanghai")}
 ---
 _From TradingView_Bot`;
 }
