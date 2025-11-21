@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 // Endpoint to receive TradingView webhook
 app.post("/webhook", async (req, res) => {
   try {
-    const { price, signal, volume } = req.body;
+    const { ticker, price, signal } = req.body;
 
     // Validate required fields
     if (!signal) {
@@ -36,9 +36,9 @@ app.post("/webhook", async (req, res) => {
     // Format message
     const message = formatMessage({
       time: new Date().toISOString(),
+      ticker: ticker || "N/A",
       price: price || "N/A",
       signal: signal,
-      volume: volume || "N/A",
     });
 
     // Send to Telegram
@@ -63,18 +63,18 @@ app.post("/webhook", async (req, res) => {
 });
 
 // Format message content
-function formatMessage({ time, price, signal, volume }) {
+function formatMessage({ time, ticker, price, signal }) {
   const emoji = getSignalEmoji(signal);
 
-  return `${emoji} *Trading Signal*
+  return `${emoji} *Trading Alert*
 
 📊 *Signal Type:* ${signal}
 💰 *Price:* ${price}
-📈 *Volume:* ${volume}
+📈 *Ticker:* ${ticker}
 🕐 *Time:* ${time}
 
 ---
-_From TradingView_`;
+_From TradingView_Bot`;
 }
 
 // Return corresponding emoji based on signal type
